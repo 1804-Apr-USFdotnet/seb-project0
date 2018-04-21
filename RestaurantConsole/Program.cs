@@ -10,7 +10,7 @@ namespace RestaurantConsole
     {
         static void Main(string[] args)
         {
-
+            Input.GetInput();
         }
     }
 }
