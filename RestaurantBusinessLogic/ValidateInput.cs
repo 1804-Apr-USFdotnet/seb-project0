@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,12 +20,12 @@ namespace RestaurantBusinessLogic
             }
         }
 
-        private static bool ValidateCommand(params string[] input)
+        public static bool ValidateCommand(params string[] input)
         {
             switch (input[0])
             {
                 case "reviews":
-                    if (input[1].Equals(String.Empty)) { return false; }
+                    if (input.Length == 1) { return false; }
                     else { return true; }
 
                 case "restaurants":
