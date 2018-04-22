@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace RestaurantBusinessLogic
 {
+    /// <summary>
+    /// Validates command syntax. Possible commands:
+    ///     1. "reviews [string]"
+    ///     2. "restaurants [optional string]"
+    /// </summary>
     public static class ValidateInput
     {
         public static void Validate(params string[] input)

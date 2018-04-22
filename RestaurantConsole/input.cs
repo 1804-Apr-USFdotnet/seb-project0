@@ -23,12 +23,11 @@ namespace RestaurantConsole
                 string input = Console.ReadLine();
                 Console.Clear();
 
-                if (input.Equals("?")) { help(); }
-                else if (input.Equals("exit")) { break; }
+                if (input.Equals("?")) { help(); }          // list commands
+                else if (input.Equals("exit")) { break; }   // exit application
                 else
                 {
-                    //split arguments into string array
-                    //to process in business logic
+                    // split arguments into string array to process in business logic
                     string[] inputParams = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     ValidateInput.Validate(inputParams);
                 }

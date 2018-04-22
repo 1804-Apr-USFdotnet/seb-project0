@@ -10,19 +10,21 @@ namespace RestaurantBusinessLogic
 {
     static internal class ProcessInput
     {
-        static internal void GetRestaurants(params string[] restaurantParams)
+        static internal List<RestaurantInfo> GetRestaurants(params string[] restaurantParams)
         {
             List<Restaurant> restaurants = new List<Restaurant>();
-            List<RestaurantInfo> restInfo = new List<RestaurantInfo>();
+            List<RestaurantInfo> restaurantsInfo = new List<RestaurantInfo>();
             DButils db = new DButils();
 
             // Get list of restaurants from database
             restaurants = db.GetRestaurantModels();
             // Convert list of restaurant models to list of restaurant output objects
-            restInfo = ConvertModels.GetRestaurantInfos(restaurants);
+            restaurantsInfo = ConvertModels.GetRestaurantInfos(restaurants);
+
+            return restaurantsInfo;
         }
 
-        static internal void GetReviews(string restaurantName)
+        static internal List<ReviewInfo> GetReviews(string restaurantName)
         {
             List<Review> reviews = new List<Review>();
             List<ReviewInfo> reviewsInfo = new List<ReviewInfo>();
@@ -34,6 +36,8 @@ namespace RestaurantBusinessLogic
             reviews = db.GetReviewModels(restaurantId);
             // Convert list of review models to list of review output objects
             reviewsInfo = ConvertModels.GetReviewInfos(reviews);
+
+            return reviewsInfo;
         }
     }
 }
