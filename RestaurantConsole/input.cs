@@ -23,7 +23,7 @@ namespace RestaurantConsole
                 string input = Console.ReadLine();
                 Console.Clear();
 
-                if (input.Equals("?")) { help(); }          // list commands
+                if (input.Equals("?")) { Output.PrintHelp(); }          // list commands
                 else if (input.Equals("exit")) { break; }   // exit application
                 else
                 {
@@ -37,26 +37,20 @@ namespace RestaurantConsole
                         {
                             case "restaurants":
                                 List <RestaurantInfo> outputRes = new List<RestaurantInfo>(JsonConvert.DeserializeObject<List<RestaurantInfo>>(response));
+                                Output.PrintRestaurants(outputRes);
                                 break;
                             case "reviews":
                                 List<RestaurantInfo> outputRev = new List<RestaurantInfo>(JsonConvert.DeserializeObject<List<RestaurantInfo>>(response));
+                                Output.PrintRestaurants(outputRev);
                                 break;
                         }
                     }
+                    else
+                    {
+                        Output.PrintInvalid();
+                    }
                 }
             }
-        }
-
-        private static void help()
-        {
-            Console.Clear();
-            Console.WriteLine("Enter a command.\n");
-            Console.WriteLine("Get reviews: \n   reviews [restaurant name]\n");
-            Console.WriteLine("Get restaurants: \n   restaurants [optional parameters]\n");
-            Console.WriteLine("   [t#]  -- get top # restaurants. E.g: restaurants t3");
-            Console.WriteLine("   [partial name] -- get restaurants containing partial name. E.g: restaurants mcd");
-            Console.WriteLine("   [order] [order by] [asc|desc] -- get ordered list of restaurants. E.g: restaurants order rating desc");
-            Console.WriteLine("   [default]  -- get all restaurants. E.g: restaurants\n");
         }
     }
 }
