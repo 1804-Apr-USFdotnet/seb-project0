@@ -29,16 +29,20 @@ namespace RestaurantConsole
                 {
                     // split arguments into string array to process in business logic
                     string[] inputParams = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    
+                    // get Json string response from business logic
                     string response = ValidateInput.Validate(inputParams);
 
                     if (response != null)
                     {
                         switch (inputParams[0])
                         {
+                            // deserialize and print list of restaurants
                             case "restaurants":
                                 List <RestaurantInfo> outputRes = new List<RestaurantInfo>(JsonConvert.DeserializeObject<List<RestaurantInfo>>(response));
                                 Output.PrintRestaurants(outputRes);
                                 break;
+                            // deserialize and print list of reviews
                             case "reviews":
                                 List<RestaurantInfo> outputRev = new List<RestaurantInfo>(JsonConvert.DeserializeObject<List<RestaurantInfo>>(response));
                                 Output.PrintRestaurants(outputRev);

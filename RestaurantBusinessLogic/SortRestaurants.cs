@@ -8,11 +8,8 @@ using RestaurantDataLogic;
 
 namespace RestaurantBusinessLogic
 {
-    static internal class SortRestaurants
+    static public class SortRestaurants
     {
-        static internal void Sort(ref List<Restaurant> r)
-        {
 
-        }
     }
 }
