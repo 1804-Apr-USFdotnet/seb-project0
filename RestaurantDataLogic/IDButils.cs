@@ -9,8 +9,7 @@ namespace RestaurantDataLogic
     interface IDButils
     {
         int GetRestaurantId(string restaurantName);
-        List<Restaurant> GetRestaurants();
-        List<Restaurant> GetRestaurants(int top); 
-        List<Review> GetReviews(int restaurantId);
+        List<Restaurant> GetRestaurantModels();
+        List<Review> GetReviewModels(int restaurantId);
     }
 }

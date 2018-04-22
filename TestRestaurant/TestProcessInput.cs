@@ -9,10 +9,12 @@ namespace TestRestaurant
         [TestMethod]
         public void GetRestaurants()
         {
+
         }
 
         public void GetReviews()
         {
+
         }
     }
 }

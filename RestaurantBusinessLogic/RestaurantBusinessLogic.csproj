@@ -40,10 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConvertModel.cs" />
     <Compile Include="EventHandler.cs" />
     <Compile Include="ProcessInput.cs" />
+    <Compile Include="RestaurantsOutput.cs" />
+    <Compile Include="ReviewsOutput.cs" />
     <Compile Include="ValidateInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RestaurantDataLogic\RestaurantDataLogic.csproj">
+      <Project>{a5a306c4-1204-414d-be6a-c8e1391f12e6}</Project>
+      <Name>RestaurantDataLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
