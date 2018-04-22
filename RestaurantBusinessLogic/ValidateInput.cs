@@ -13,10 +13,8 @@ namespace RestaurantBusinessLogic
         {
             if (ValidateCommand(input))
             {
-                if (input[0] == "reviews")
-                    ProcessInput.GetReviews(input[1]);
-                else
-                    ProcessInput.GetRestaurants(input);
+                if (input[0] == "reviews") { ProcessInput.GetReviews(input[1]); }
+                else { ProcessInput.GetRestaurants(input); }
             }
         }
 

@@ -8,15 +8,16 @@ using RestaurantDataLogic;
 
 namespace RestaurantBusinessLogic
 {
-    class RestaurantsOutput
+    struct RestaurantInfo
     {
         public string Name { get; set; }
         public string Address { get; set; }
         public double Rating { get; set; }
 
-        public static explicit operator RestaurantsOutput(Restaurant r)
+        // Convert from Restaurant entity model to RestaurantInfo
+        public static explicit operator RestaurantInfo(Restaurant r)
         {
-            RestaurantsOutput rout = new RestaurantsOutput();
+            RestaurantInfo rout = new RestaurantInfo();
             rout.Name = r.RName;
             rout.Address = r.RAddress;
             rout.Rating = (double)r.Rating;

@@ -40,11 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConvertModel.cs" />
+    <Compile Include="ConvertModels.cs" />
     <Compile Include="EventHandler.cs" />
     <Compile Include="ProcessInput.cs" />
-    <Compile Include="RestaurantsOutput.cs" />
-    <Compile Include="ReviewsOutput.cs" />
+    <Compile Include="RestaurantInfo.cs" />
+    <Compile Include="ReviewInfo.cs" />
     <Compile Include="ValidateInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
