@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,13 +15,14 @@ namespace RestaurantBusinessLogic
     /// </summary>
     public static class ValidateInput
     {
-        public static void Validate(params string[] input)
+        public static string Validate(params string[] input)
         {
             if (ValidateCommand(input))
             {
-                if (input[0] == "reviews") { ProcessInput.GetReviews(input[1]); }
-                else { ProcessInput.GetRestaurants(input); }
+                if (input[0] == "reviews") { return JsonConvert.SerializeObject(ProcessInput.GetReviews(input[1])); }
+                else { return JsonConvert.SerializeObject(ProcessInput.GetRestaurants(input)); }
             }
+            return null;
         }
 
         public static bool ValidateCommand(params string[] input)

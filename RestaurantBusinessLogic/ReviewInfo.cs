@@ -8,7 +8,7 @@ using RestaurantDataLogic;
 
 namespace RestaurantBusinessLogic
 {
-    struct ReviewInfo
+    public struct ReviewInfo
     {
         public string Name { get; set; }
         public string Summary { get; set; }

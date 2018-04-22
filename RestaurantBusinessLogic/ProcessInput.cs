@@ -18,10 +18,12 @@ namespace RestaurantBusinessLogic
 
             // Get list of restaurants from database
             restaurants = db.GetRestaurantModels();
+
+            // Sort list based on optional parameters
+            if (restaurantParams.Length > 1) { SortRestaurants.Sort(ref restaurants); }
+
             // Convert list of restaurant models to list of restaurant output objects
             restaurantsInfo = ConvertModels.GetRestaurantInfos(restaurants);
-
-            if (restaurantParams.Length > 1) { SortRestaurants.Sort(ref restaurantsInfo); }
 
             return restaurantsInfo;
         }
@@ -34,8 +36,10 @@ namespace RestaurantBusinessLogic
 
             //Get restaurant id based on name
             int restaurantId = db.GetRestaurantId(restaurantName);
+
             // Get list of reviews from database based on restaurant id
             reviews = db.GetReviewModels(restaurantId);
+
             // Convert list of review models to list of review output objects
             reviewsInfo = ConvertModels.GetReviewInfos(reviews);
 

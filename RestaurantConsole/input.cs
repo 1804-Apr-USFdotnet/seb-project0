@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 using RestaurantBusinessLogic;
 
 namespace RestaurantConsole
@@ -29,7 +29,20 @@ namespace RestaurantConsole
                 {
                     // split arguments into string array to process in business logic
                     string[] inputParams = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    ValidateInput.Validate(inputParams);
+                    string response = ValidateInput.Validate(inputParams);
+
+                    if (response != null)
+                    {
+                        switch (inputParams[0])
+                        {
+                            case "restaurants":
+                                List <RestaurantInfo> outputRes = new List<RestaurantInfo>(JsonConvert.DeserializeObject<List<RestaurantInfo>>(response));
+                                break;
+                            case "reviews":
+                                List<RestaurantInfo> outputRev = new List<RestaurantInfo>(JsonConvert.DeserializeObject<List<RestaurantInfo>>(response));
+                                break;
+                        }
+                    }
                 }
             }
         }
