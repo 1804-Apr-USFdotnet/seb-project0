@@ -4,15 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestRestaurant
 {
     [TestClass]
-    public class TestProcessInput
+    public class TestSortRestaurants
     {
         [TestMethod]
-        public void GetRestaurants()
-        {
-
-        }
-
-        public void GetReviews()
+        public void TestSort()
         {
 
         }

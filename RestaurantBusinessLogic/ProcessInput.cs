@@ -21,6 +21,8 @@ namespace RestaurantBusinessLogic
             // Convert list of restaurant models to list of restaurant output objects
             restaurantsInfo = ConvertModels.GetRestaurantInfos(restaurants);
 
+            if (restaurantParams.Length > 1) { SortRestaurants.Sort(ref restaurantsInfo); }
+
             return restaurantsInfo;
         }
 
