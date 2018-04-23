@@ -34,7 +34,7 @@ namespace TestRestaurant
             List<RestaurantInfo> expectedList = new List<RestaurantInfo> { dummy1, dummy3, dummy2, dummy4, dummy5 };
 
             // Act
-            SortRestaurants.SortBy(actualList, "rating", "ascending");
+            SortRestaurants.SortBy(ref actualList, "rating", "ascending");
 
             // Assert
             CollectionAssert.AreEqual(expectedList, actualList);
@@ -48,7 +48,7 @@ namespace TestRestaurant
             List<RestaurantInfo> expectedList = new List<RestaurantInfo> { dummy5, dummy4, dummy2 };
 
             // Act
-            SortRestaurants.Top(actualList, 3);
+            SortRestaurants.Top(ref actualList, 3);
 
             // Assert
             CollectionAssert.AreEqual(expectedList, actualList);
@@ -61,7 +61,7 @@ namespace TestRestaurant
             List<RestaurantInfo> expectedList = new List<RestaurantInfo> { dummy1, dummy3 };
 
             // Act
-            SortRestaurants.Contains(actualList, "Do");
+            SortRestaurants.Contains(ref actualList, "Do");
 
             // Assert
             CollectionAssert.AreEqual(expectedList, actualList);

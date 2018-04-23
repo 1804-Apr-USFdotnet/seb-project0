@@ -19,11 +19,11 @@ namespace RestaurantBusinessLogic
             // Get list of restaurants from database
             restaurants = db.GetRestaurantModels();
 
-            // Sort list based on optional parameters
-            if (restaurantParams.Length > 1) { SortRestaurants.Sort(ref restaurants); }
-
             // Convert list of restaurant models to list of restaurant output objects
             restaurantsInfo = ConvertModels.GetRestaurantInfos(restaurants);
+
+            // Sort list based on optional parameters
+            if (restaurantParams.Length > 1) { SortRestaurants.Sort(ref restaurantsInfo, restaurantParams); }
 
             return restaurantsInfo;
         }

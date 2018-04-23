@@ -32,7 +32,7 @@ namespace RestaurantConsole
             foreach (RestaurantInfo info in r)
             {
                 Console.Clear();
-                Console.WriteLine("Name: {0}\nAddress: {1}\nRating: \n", info.Name, info.Address, info.Rating);
+                Console.WriteLine("Name: {0}\nAddress: {1}\nRating: {2}\n", info.Name, info.Address, info.Rating);
             }
         }
 
