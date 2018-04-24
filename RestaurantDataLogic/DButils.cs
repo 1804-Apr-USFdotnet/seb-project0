@@ -41,7 +41,7 @@ namespace RestaurantDataLogic
             List<Review> reviews = new List<Review>();
             using (var db = new RestaurantsEntities2())
             {
-                reviews = db.Reviews.Where(e => e.id.Equals(restaurantId)).ToList();
+                reviews = db.Reviews.AsNoTracking().Where(e => e.id.Equals(restaurantId)).ToList();
             }
             return reviews;
         }
