@@ -41,16 +41,7 @@ namespace RestaurantDataLogic
             List<Review> reviews = new List<Review>();
             using (var db = new RestaurantsEntities2())
             {
-                var query = from r in db.Reviews
-                            where r.id.Equals(restaurantId)
-                            select r;
-
-                //reviews = query.ToList();
                 reviews = db.Reviews.Where(e => e.id.Equals(restaurantId)).ToList();
-            }
-            foreach (Review review in reviews)
-            {
-                Debug.WriteLine(review.Summary);
             }
             return reviews;
         }
