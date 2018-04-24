@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,7 @@ namespace RestaurantBusinessLogic
 
         static public void SortBy(ref List<RestaurantInfo> r, string orderby, string asc)
         {
-            switch(orderby)
+            switch (orderby)
             {
                 case "name":
                     if (asc == "asc") { r = r.OrderBy(x => x.Name).ToList(); }
@@ -74,7 +75,7 @@ namespace RestaurantBusinessLogic
 
         static public void Contains(ref List<RestaurantInfo> r, string partial)
         {
-            r = r.Where(w => partial.All(l => w.Name.Contains(l))).ToList();
+            r = r.Where(w => partial.All(l => w.Name.ToLower().Contains(l))).ToList();
         }
     }
 }

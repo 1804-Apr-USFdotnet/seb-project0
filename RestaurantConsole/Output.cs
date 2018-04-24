@@ -16,9 +16,9 @@ namespace RestaurantConsole
             Console.WriteLine("Enter a command.\n");
             Console.WriteLine("Get reviews: \n   reviews [restaurant name]\n");
             Console.WriteLine("Get restaurants: \n   restaurants [optional parameters]\n");
-            Console.WriteLine("   [t#]  -- get top # restaurants. E.g: restaurants t3");
-            Console.WriteLine("   [partial name] -- get restaurants containing partial name. E.g: restaurants mcd");
-            Console.WriteLine("   [order] [order by] [asc|desc] -- get ordered list of restaurants. E.g: restaurants order rating desc");
+            Console.WriteLine("   t [#]  -- get top # restaurants. E.g: restaurants t3");
+            Console.WriteLine("   partial [partial name] -- get restaurants containing partial name. E.g: restaurants mcd");
+            Console.WriteLine("   sortby [order by] [asc|desc] -- get ordered list of restaurants. E.g: restaurants order rating desc");
             Console.WriteLine("   [default]  -- get all restaurants. E.g: restaurants\n");
         }
 
@@ -27,20 +27,20 @@ namespace RestaurantConsole
             Console.WriteLine("No entries found or invalid input. Type '?' for help.");
         }
 
-        internal static void PrintRestaurants(List<RestaurantInfo> r)
+        internal static void PrintRestaurants(List<Dictionary<string, string>> r)
         {
-            foreach (RestaurantInfo info in r)
+            Console.Clear();
+            foreach (Dictionary<string,string> info in r)
             {
-                Console.Clear();
-                Console.WriteLine("Name: {0}\nAddress: {1}\nRating: {2}\n", info.Name, info.Address, info.Rating);
+                Console.WriteLine("Name: {0}\nAddress: {1}\nRating: {2}\n", info["Name"], info["Address"], info["Rating"]);
             }
         }
 
         internal static void PrintReviews(List<ReviewInfo> r)
         {
+            Console.Clear();
             foreach (ReviewInfo info in r)
             {
-                Console.Clear();
                 Console.WriteLine("Author: {0}\nReview: {1}\nRating: \n", info.Name, info.Summary, info.Rating);
             }
         }

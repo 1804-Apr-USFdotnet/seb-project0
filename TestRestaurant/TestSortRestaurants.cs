@@ -23,7 +23,7 @@ namespace TestRestaurant
         public static void SetUp(TestContext testContext)
         {
             dummy1 = new RestaurantInfo { Name = "McDonalds", Address = "65 Some Street", Rating = 2.8 };
-            dummy2 = new RestaurantInfo { Name = "Wendys", Address = "11 Apple Avenue", Rating = 3.6 }; ;
+            dummy2 = new RestaurantInfo { Name = "Wendys", Address = "11 Apple Avenue", Rating = 3.6 };
             dummy3 = new RestaurantInfo { Name = "Dunkin Donuts", Address = "23 America Drive Plaza", Rating = 3.5 }; ;
             dummy4 = new RestaurantInfo { Name = "Subway", Address = "113 Benjamin Boulevard", Rating = 4.1 }; ;
             dummy5 = new RestaurantInfo { Name = "Five Guys", Address = "211 Daytona Street", Rating = 4.8 }; ;
@@ -51,7 +51,6 @@ namespace TestRestaurant
         {
             // Arrange
             List<RestaurantInfo> expectedList = new List<RestaurantInfo> { dummy5, dummy4, dummy2 };
-            Debug.WriteLine("Expected:");
 
             // Act
             SortRestaurants.Top(ref actualList2, 3);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,13 +40,13 @@ namespace RestaurantConsole
                         {
                             // deserialize and print list of restaurants
                             case "restaurants":
-                                List <RestaurantInfo> outputRes = new List<RestaurantInfo>(JsonConvert.DeserializeObject<List<RestaurantInfo>>(response));
+                                var outputRes = JsonConvert.DeserializeObject<List<Dictionary<string,string>>>(response);
                                 Output.PrintRestaurants(outputRes);
                                 break;
                             // deserialize and print list of reviews
                             case "reviews":
-                                List<RestaurantInfo> outputRev = new List<RestaurantInfo>(JsonConvert.DeserializeObject<List<RestaurantInfo>>(response));
-                                Output.PrintRestaurants(outputRev);
+                                var outputRev = new List<ReviewInfo>(JsonConvert.DeserializeObject<List<ReviewInfo>>(response));
+                                Output.PrintReviews(outputRev);
                                 break;
                         }
                     }
