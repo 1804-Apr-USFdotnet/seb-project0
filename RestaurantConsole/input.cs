@@ -45,7 +45,7 @@ namespace RestaurantConsole
                                 break;
                             // deserialize and print list of reviews
                             case "reviews":
-                                var outputRev = new List<ReviewInfo>(JsonConvert.DeserializeObject<List<ReviewInfo>>(response));
+                                var outputRev = JsonConvert.DeserializeObject<List<Dictionary<string,string>>>(response);
                                 Output.PrintReviews(outputRev);
                                 break;
                         }

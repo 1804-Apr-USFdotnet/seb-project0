@@ -21,6 +21,7 @@ namespace RestaurantBusinessLogic
             rout.Name = r.Username;
             rout.Summary = r.Summary;
             rout.Rating = (double)r.Rating;
+
             return rout;
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantDataLogic
 {
-    interface IDButils
+    public interface IDButils
     {
         int GetRestaurantId(string restaurantName);
         List<Restaurant> GetRestaurantModels();

@@ -25,12 +25,12 @@ namespace RestaurantBusinessLogic
         }
 
         //convert list of reviews to list of reviewInfo
-        static internal List<ReviewInfo> GetReviewInfos(List<Review> restaurants)
+        static internal List<ReviewInfo> GetReviewInfos(List<Review> reviews)
         {
             List<ReviewInfo> output = new List<ReviewInfo>();
-            foreach (var restaurant in restaurants)
+            foreach (var review in reviews)
             {
-                output.Add((ReviewInfo)restaurant);
+                output.Add((ReviewInfo)review);
             }
             return output;
         }
