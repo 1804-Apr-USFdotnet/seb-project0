@@ -57,21 +57,17 @@ namespace RestaurantConsole
                         }
                     }
                 }
+
                 catch (InvalidInputException e)
                 {
                     logger.Error(e.Message);
-                    logger.Debug(e.Message);
-                    Console.WriteLine("Ayy");
+                    Output.PrintInvalid();
                 }
-
-                //catch ()
-                //{
-
-                //}
 
                 catch (Exception e)
                 {
                     logger.Error(e.Message);
+                    Output.PrintInvalid();
                 }
             }   
         }

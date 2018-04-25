@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RestaurantBusinessLogic.CustomExceptions;
 
 namespace RestaurantBusinessLogic
 {
@@ -11,34 +12,24 @@ namespace RestaurantBusinessLogic
     {
         public static string Validate(params string[] input)
         {
-            /*if (*/ValidateCommand(input);
-            //{
-                if (input[0] == "reviews") { return JsonConvert.SerializeObject(ProcessInput.GetReviews(input[1])); }
-                else { return JsonConvert.SerializeObject(ProcessInput.GetRestaurants(input)); }
-            //}
-            //return null;
+            ValidateCommand(input);
+            if (input[0] == "reviews") { return JsonConvert.SerializeObject(ProcessInput.GetReviews(input[1])); }
+            else { return JsonConvert.SerializeObject(ProcessInput.GetRestaurants(input)); }
         }
 
         public static void ValidateCommand(params string[] input)
         {
-            if (input.Length == 0)
-                throw new InvalidInputException();
-                //return false;
+            if (input.Length == 0) throw new InvalidInputException(); // no command given
 
             switch (input[0])
             {
                 case "reviews":
-                    if (input.Length == 1) throw new InvalidInputException(); // { return false; }
-                    //else { return true; }
+                    if (input.Length == 1) throw new InvalidParameterException(); // no parameters exist
                     break;
                 case "restaurants":
-                    //return true;
                     break;
                 default:
-                    throw new InvalidInputException();
-                    //return false;
-                    break;
-
+                    throw new InvalidCommandException(); // invalid command
             }
         }
     }

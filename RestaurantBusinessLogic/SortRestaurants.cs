@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantBusinessLogic.CustomExceptions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,35 +15,39 @@ namespace RestaurantBusinessLogic
                 case "sortby":
                     {
                         if (input.Length > 3)
-                        {
                             if (input[2] == "rating" || input[2] == "name")
                                 if (input[3] == "asc" || input[3] == "desc")
+                                {
                                     SortBy(ref r, input[2], input[3]);
-                        }
+                                    break;
+                                }
                     }
-                    break;
+                    throw new InvalidParameterException();
 
                 case "top":
                     {
                         int value;
                         if (int.TryParse(input[2], out value))
-                        {
-                            if (value > 0) { Top(ref r, value); }
-                        }
+                            if (value > -1)
+                            {
+                                Top(ref r, value);
+                                break;
+                            }
                     }
-                    break;
+                    throw new InvalidParameterException();
 
                 case "contains":
                     {
                         if (input[2] != string.Empty)
                         {
                             Contains(ref r, input[2]);
+                            break;
                         }
                     }
-                    break;
+                    throw new InvalidParameterException();
 
                 default:
-                    break;
+                    throw new InvalidParameterException();
             }
         }
 

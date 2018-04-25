@@ -17,22 +17,6 @@ namespace RestaurantDataLogic
                 Dictionary<string, int> Ids = new Dictionary<string, int>((Dictionary<string, int>)serializer.Deserialize(reader));
                 return Ids[restaurantName];
             }
-
-            //catch (FileNotFoundException e)
-            //{
-
-            //}
-
-            //catch (DirectoryNotFoundException e)
-            //{
-
-            //}
-
-            //catch (Exception e)
-            //{
-
-            //}
-
             finally
             {
                 if (reader != null)
