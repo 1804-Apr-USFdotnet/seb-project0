@@ -11,30 +11,34 @@ namespace RestaurantBusinessLogic
     {
         public static string Validate(params string[] input)
         {
-            if (ValidateCommand(input))
-            {
+            /*if (*/ValidateCommand(input);
+            //{
                 if (input[0] == "reviews") { return JsonConvert.SerializeObject(ProcessInput.GetReviews(input[1])); }
                 else { return JsonConvert.SerializeObject(ProcessInput.GetRestaurants(input)); }
-            }
-            return null;
+            //}
+            //return null;
         }
 
-        public static bool ValidateCommand(params string[] input)
+        public static void ValidateCommand(params string[] input)
         {
             if (input.Length == 0)
-                return false;
+                throw new InvalidInputException();
+                //return false;
 
             switch (input[0])
             {
                 case "reviews":
-                    if (input.Length == 1) { return false; }
-                    else { return true; }
-
+                    if (input.Length == 1) throw new InvalidInputException(); // { return false; }
+                    //else { return true; }
+                    break;
                 case "restaurants":
-                    return true;
-
+                    //return true;
+                    break;
                 default:
-                    return false;
+                    throw new InvalidInputException();
+                    //return false;
+                    break;
+
             }
         }
     }
