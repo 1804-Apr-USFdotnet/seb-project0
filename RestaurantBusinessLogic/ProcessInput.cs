@@ -15,7 +15,7 @@ namespace RestaurantBusinessLogic
         {
             List<Restaurant> restaurants = new List<Restaurant>();
             List<RestaurantInfo> restaurantsInfo = new List<RestaurantInfo>();
-            IDButils db = new DButils();
+            IStorage db = new DBstorage();
 
             // Get list of restaurants from database
             restaurants = db.GetRestaurantModels();
@@ -33,7 +33,7 @@ namespace RestaurantBusinessLogic
         {
             List<Review> reviews = new List<Review>();
             List<ReviewInfo> reviewsInfo = new List<ReviewInfo>();
-            IDButils db = new DButils();
+            IStorage db = new DBstorage();
 
             //Get restaurant id based on name
             int restaurantId = db.GetRestaurantId(restaurantName);

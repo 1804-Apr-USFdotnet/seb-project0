@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantDataLogic
 {
-    public class DButils : IDButils
+    public class DBstorage : IStorage
     {
         public int GetRestaurantId(string restaurantName)
         {
@@ -24,12 +24,10 @@ namespace RestaurantDataLogic
         /// <returns>List of all Restaurants</returns>
         public List<Restaurant> GetRestaurantModels()
         {
-            List<Restaurant> restaurants = new List<Restaurant>();
             using (var db = new RestaurantsEntities2())
             {
-                restaurants = db.Restaurants.ToList();
+                return db.Restaurants.ToList();
             }
-            return restaurants;
         }
 
         /// <summary>
@@ -38,12 +36,10 @@ namespace RestaurantDataLogic
         /// <returns>List of reviews</returns>
         public List<Review> GetReviewModels(int restaurantId)
         {
-            List<Review> reviews = new List<Review>();
             using (var db = new RestaurantsEntities2())
             {
-                reviews = db.Reviews.AsNoTracking().Where(e => e.id.Equals(restaurantId)).ToList();
+                return db.Reviews.AsNoTracking().Where(e => e.id.Equals(restaurantId)).ToList();
             }
-            return reviews;
         }
     }
 }

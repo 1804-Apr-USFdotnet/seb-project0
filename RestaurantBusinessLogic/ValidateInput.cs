@@ -27,6 +27,9 @@ namespace RestaurantBusinessLogic
 
         public static bool ValidateCommand(params string[] input)
         {
+            if (input.Length == 0)
+                return false;
+
             switch (input[0])
             {
                 case "reviews":

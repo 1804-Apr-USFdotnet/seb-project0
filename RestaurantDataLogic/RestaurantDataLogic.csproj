@@ -49,8 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DButils.cs" />
-    <Compile Include="IDButils.cs" />
+    <Compile Include="DBstorage.cs" />
+    <Compile Include="IStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Restaurant.Context.cs">
       <AutoGen>True</AutoGen>
@@ -68,6 +68,7 @@
     <Compile Include="Review.cs">
       <DependentUpon>Restaurant.tt</DependentUpon>
     </Compile>
+    <Compile Include="XMLstorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

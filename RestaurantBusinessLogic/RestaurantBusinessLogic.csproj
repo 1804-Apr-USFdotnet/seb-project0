@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConvertModels.cs" />
-    <Compile Include="EventHandler.cs" />
     <Compile Include="ProcessInput.cs" />
     <Compile Include="RestaurantInfo.cs" />
     <Compile Include="ReviewInfo.cs" />
