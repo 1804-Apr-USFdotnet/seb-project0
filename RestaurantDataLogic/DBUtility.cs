@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantDataLogic
 {
-    public class DBstorage : IStorage
+    public class DBUtility : IUtility
     {
         public int GetRestaurantId(string restaurantName)
         {

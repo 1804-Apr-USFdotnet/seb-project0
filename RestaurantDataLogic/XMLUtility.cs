@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace RestaurantDataLogic
 {
-    class XMLstorage : IStorage
+    class XMLUtility : IUtility
     {
         public int GetRestaurantId(string restaurantName)
         {

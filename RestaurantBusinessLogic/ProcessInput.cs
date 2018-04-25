@@ -15,10 +15,12 @@ namespace RestaurantBusinessLogic
         {
             List<Restaurant> restaurants = new List<Restaurant>();
             List<RestaurantInfo> restaurantsInfo = new List<RestaurantInfo>();
-            IStorage db = new DBstorage();
+
+            // Dependency injection
+            Storage storage = new Storage(new DBUtility());
 
             // Get list of restaurants from database
-            restaurants = db.GetRestaurantModels();
+            restaurants = storage.GetRestaurantModels();
 
             // Convert list of restaurant models to list of restaurant output objects
             restaurantsInfo = ConvertModels.GetRestaurantInfos(restaurants);
@@ -33,13 +35,15 @@ namespace RestaurantBusinessLogic
         {
             List<Review> reviews = new List<Review>();
             List<ReviewInfo> reviewsInfo = new List<ReviewInfo>();
-            IStorage db = new DBstorage();
 
-            //Get restaurant id based on name
-            int restaurantId = db.GetRestaurantId(restaurantName);
+            // Dependency injection
+            Storage storage = new Storage(new DBUtility());
+
+            // Get restaurant id based on name
+            int restaurantId = storage.GetRestaurantId(restaurantName);
 
             // Get list of reviews from database based on restaurant id
-            reviews = db.GetReviewModels(restaurantId);
+            reviews = storage.GetReviewModels(restaurantId);
 
             // Convert list of review models to list of review output objects
             reviewsInfo = ConvertModels.GetReviewInfos(reviews);
