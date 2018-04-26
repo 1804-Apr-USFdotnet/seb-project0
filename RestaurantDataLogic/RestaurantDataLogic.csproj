@@ -54,55 +54,50 @@
   <ItemGroup>
     <Compile Include="DBUtility.cs" />
     <Compile Include="IUtility.cs" />
+    <Compile Include="Models.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Models.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Models.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Restaurant.cs">
-      <DependentUpon>Restaurants.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Restaurants.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Restaurants.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Restaurants.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Restaurants.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Restaurants.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Restaurants.edmx</DependentUpon>
+      <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Review.cs">
-      <DependentUpon>Restaurants.tt</DependentUpon>
+      <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Storage.cs" />
     <Compile Include="LocalUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
-    <EntityDeploy Include="Restaurants.edmx">
+    <EntityDeploy Include="Models.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Restaurants.Designer.cs</LastGenOutput>
+      <LastGenOutput>Models.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Restaurants.edmx.diagram">
-      <DependentUpon>Restaurants.edmx</DependentUpon>
+    <None Include="Models.edmx.diagram">
+      <DependentUpon>Models.edmx</DependentUpon>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Restaurants.Context.tt">
+    <Content Include="Models.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Restaurants.edmx</DependentUpon>
-      <LastGenOutput>Restaurants.Context.cs</LastGenOutput>
+      <DependentUpon>Models.edmx</DependentUpon>
+      <LastGenOutput>Models.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Restaurants.tt">
+    <Content Include="Models.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Restaurants.edmx</DependentUpon>
-      <LastGenOutput>Restaurants.cs</LastGenOutput>
+      <DependentUpon>Models.edmx</DependentUpon>
+      <LastGenOutput>Models.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

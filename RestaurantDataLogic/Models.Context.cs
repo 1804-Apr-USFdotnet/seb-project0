@@ -13,10 +13,10 @@ namespace RestaurantDataLogic
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RestaurantsEntities : DbContext
+    public partial class EFRestaurants : DbContext
     {
-        public RestaurantsEntities()
-            : base("name=RestaurantsEntities")
+        public EFRestaurants()
+            : base("name=EFRestaurants")
         {
         }
     
