@@ -13,8 +13,15 @@ namespace RestaurantBusinessLogic
         public static string Validate(params string[] input)
         {
             ValidateCommand(input);
-            if (input[0] == "reviews") { return JsonConvert.SerializeObject(ProcessInput.GetReviews(input[1])); }
-            else { return JsonConvert.SerializeObject(ProcessInput.GetRestaurants(input)); }
+            if (input[0] == "reviews")
+            {
+                return JsonConvert.SerializeObject(ProcessInput.GetReviews(input[1]));
+            }
+
+            else
+            {
+                return JsonConvert.SerializeObject(ProcessInput.GetRestaurants(input));
+            }
         }
 
         public static void ValidateCommand(params string[] input)

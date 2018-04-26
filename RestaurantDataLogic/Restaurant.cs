@@ -14,11 +14,18 @@ namespace RestaurantDataLogic
     
     public partial class Restaurant
     {
-        public int id { get; set; }
-        public string RName { get; set; }
-        public string RAddress { get; set; }
-        public Nullable<double> Rating { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Restaurant()
+        {
+            this.Reviews = new HashSet<Review>();
+        }
     
-        public virtual Review Review { get; set; }
+        public int id { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public double Rating { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

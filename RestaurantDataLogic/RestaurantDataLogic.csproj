@@ -36,6 +36,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -52,49 +55,54 @@
     <Compile Include="DBUtility.cs" />
     <Compile Include="IUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Restaurant.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Restaurant.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="Restaurant.cs">
-      <DependentUpon>Restaurant.tt</DependentUpon>
+      <DependentUpon>Restaurants.tt</DependentUpon>
     </Compile>
-    <Compile Include="Restaurant.Designer.cs">
+    <Compile Include="Restaurants.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Restaurant.edmx</DependentUpon>
+      <DependentUpon>Restaurants.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurants.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Restaurants.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurants.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Restaurants.edmx</DependentUpon>
     </Compile>
     <Compile Include="Review.cs">
-      <DependentUpon>Restaurant.tt</DependentUpon>
+      <DependentUpon>Restaurants.tt</DependentUpon>
     </Compile>
     <Compile Include="Storage.cs" />
-    <Compile Include="XMLUtility.cs" />
+    <Compile Include="LocalUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="Restaurant.edmx">
+    <EntityDeploy Include="Restaurants.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Restaurant.Designer.cs</LastGenOutput>
+      <LastGenOutput>Restaurants.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Restaurant.edmx.diagram">
-      <DependentUpon>Restaurant.edmx</DependentUpon>
+    <None Include="Restaurants.edmx.diagram">
+      <DependentUpon>Restaurants.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Restaurant.Context.tt">
+    <Content Include="Restaurants.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Restaurant.edmx</DependentUpon>
-      <LastGenOutput>Restaurant.Context.cs</LastGenOutput>
+      <DependentUpon>Restaurants.edmx</DependentUpon>
+      <LastGenOutput>Restaurants.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Restaurant.tt">
+    <Content Include="Restaurants.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Restaurant.edmx</DependentUpon>
-      <LastGenOutput>Restaurant1.cs</LastGenOutput>
+      <DependentUpon>Restaurants.edmx</DependentUpon>
+      <LastGenOutput>Restaurants.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

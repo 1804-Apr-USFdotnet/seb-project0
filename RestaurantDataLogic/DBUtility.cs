@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace RestaurantDataLogic
@@ -7,9 +8,9 @@ namespace RestaurantDataLogic
     {
         public int GetRestaurantId(string restaurantName)
         {
-            using (var db = new RestaurantsEntities2())
+            using (var db = new RestaurantsEntities())
             {
-                return db.Restaurants.SingleOrDefault(r => r.RName == restaurantName).id;
+                return db.Restaurants.SingleOrDefault(r => r.Name == restaurantName).id;
             }
         }
 
@@ -19,7 +20,7 @@ namespace RestaurantDataLogic
         /// <returns>List of all Restaurants</returns>
         public List<Restaurant> GetRestaurantModels()
         {
-            using (var db = new RestaurantsEntities2())
+            using (var db = new RestaurantsEntities())
             {
                 return db.Restaurants.ToList();
             }
@@ -31,7 +32,7 @@ namespace RestaurantDataLogic
         /// <returns>List of reviews</returns>
         public List<Review> GetReviewModels(int restaurantId)
         {
-            using (var db = new RestaurantsEntities2())
+            using (var db = new RestaurantsEntities())
             {
                 return db.Reviews.AsNoTracking().Where(e => e.id.Equals(restaurantId)).ToList();
             }

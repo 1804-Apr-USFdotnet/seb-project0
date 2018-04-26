@@ -12,9 +12,10 @@ namespace RestaurantBusinessLogic
         public static explicit operator RestaurantInfo(Restaurant r)
         {
             RestaurantInfo rout = new RestaurantInfo();
-            rout.Name = r.RName;
-            rout.Address = r.RAddress;
+            rout.Name = r.Name;
+            rout.Address = r.Address;
             rout.Rating = (double)r.Rating;
+
             return rout;
         }
     }

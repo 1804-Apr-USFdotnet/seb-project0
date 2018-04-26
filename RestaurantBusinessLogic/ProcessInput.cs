@@ -10,7 +10,7 @@ namespace RestaurantBusinessLogic
             List<Restaurant> restaurants = new List<Restaurant>();
             List<RestaurantInfo> restaurantsInfo = new List<RestaurantInfo>();
 
-            // Dependency injection
+            // Dependency injection for entity storage
             Storage storage = new Storage(new DBUtility());
 
             // Get list of restaurants from database

@@ -10,24 +10,23 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RName" Type="varchar" MaxLength="20" />
-          <Property Name="RAddress" Type="varchar" MaxLength="20" />
-          <Property Name="Rating" Type="float" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Rating" Type="float" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Restaurants.dbo.Reviews' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Reviews">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ReviewId" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="Username" Type="varchar" MaxLength="20" />
-          <Property Name="Summary" Type="varchar" MaxLength="255" />
-          <Property Name="Rating" Type="float" />
+          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Summary" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Rating" Type="float" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Reviews__id__4D94879B">
+        <Association Name="FK__Reviews__id__5BE2A6F2">
           <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
-          <End Role="Reviews" Type="Self.Reviews" Multiplicity="0..1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurants">
               <PropertyRef Name="id" />
@@ -39,15 +38,8 @@ warning 6002: The table/view 'Restaurants.dbo.Reviews' does not have a primary k
         </Association>
         <EntityContainer Name="RestaurantsModelStoreContainer">
           <EntitySet Name="Restaurants" EntityType="Self.Restaurants" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Reviews" EntityType="Self.Reviews" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Reviews].[id] AS [id], 
-    [Reviews].[Username] AS [Username], 
-    [Reviews].[Summary] AS [Summary], 
-    [Reviews].[Rating] AS [Rating]
-    FROM [dbo].[Reviews] AS [Reviews]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__Reviews__id__4D94879B" Association="Self.FK__Reviews__id__4D94879B">
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Reviews__id__5BE2A6F2" Association="Self.FK__Reviews__id__5BE2A6F2">
             <End Role="Restaurants" EntitySet="Restaurants" />
             <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
@@ -62,24 +54,25 @@ warning 6002: The table/view 'Restaurants.dbo.Reviews' does not have a primary k
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="RAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Rating" Type="Double" />
-          <NavigationProperty Name="Review" Relationship="Self.FK__Reviews__id__4D94879B" FromRole="Restaurants" ToRole="Reviews" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rating" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__id__5BE2A6F2" FromRole="Restaurants" ToRole="Reviews" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ReviewId" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Summary" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Rating" Type="Double" />
-          <NavigationProperty Name="Restaurant" Relationship="Self.FK__Reviews__id__4D94879B" FromRole="Reviews" ToRole="Restaurants" />
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Summary" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rating" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK__Reviews__id__5BE2A6F2" FromRole="Reviews" ToRole="Restaurants" />
         </EntityType>
-        <Association Name="FK__Reviews__id__4D94879B">
+        <Association Name="FK__Reviews__id__5BE2A6F2">
           <End Role="Restaurants" Type="Self.Restaurant" Multiplicity="1" />
-          <End Role="Reviews" Type="Self.Review" Multiplicity="0..1" />
+          <End Role="Reviews" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurants">
               <PropertyRef Name="id" />
@@ -89,10 +82,10 @@ warning 6002: The table/view 'Restaurants.dbo.Reviews' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RestaurantsEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RestaurantsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
           <EntitySet Name="Reviews" EntityType="Self.Review" />
-          <AssociationSet Name="FK__Reviews__id__4D94879B" Association="Self.FK__Reviews__id__4D94879B">
+          <AssociationSet Name="FK__Reviews__id__5BE2A6F2" Association="Self.FK__Reviews__id__5BE2A6F2">
             <End Role="Restaurants" EntitySet="Restaurants" />
             <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
@@ -102,13 +95,13 @@ warning 6002: The table/view 'Restaurants.dbo.Reviews' does not have a primary k
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RestaurantsModelStoreContainer" CdmEntityContainer="RestaurantsEntities2">
+        <EntityContainerMapping StorageEntityContainer="RestaurantsModelStoreContainer" CdmEntityContainer="RestaurantsEntities">
           <EntitySetMapping Name="Restaurants">
             <EntityTypeMapping TypeName="RestaurantsModel.Restaurant">
               <MappingFragment StoreEntitySet="Restaurants">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="RName" ColumnName="RName" />
-                <ScalarProperty Name="RAddress" ColumnName="RAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -117,6 +110,7 @@ warning 6002: The table/view 'Restaurants.dbo.Reviews' does not have a primary k
             <EntityTypeMapping TypeName="RestaurantsModel.Review">
               <MappingFragment StoreEntitySet="Reviews">
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Summary" ColumnName="Summary" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />

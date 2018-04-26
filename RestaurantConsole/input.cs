@@ -26,7 +26,7 @@ namespace RestaurantConsole
                     Console.Clear();
 
                     if (input.Equals("?")) { Output.PrintHelp(); }          // list commands
-                    else if (input.Equals("exit")) { break; }   // exit application
+                    else if (input.Equals("exit")) { break; }               // exit application
                     else
                     {
                         // split arguments into string array to process in business logic
