@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace RestaurantDataLogic
 {
-    public class LocalUtility : IUtility
+    public class LocalUtility //: IUtility
     {
         public int GetRestaurantId(string restaurantName)
         {
@@ -42,7 +42,7 @@ namespace RestaurantDataLogic
             return reviews;
         }
 
-        //public static void WriteToXmlFile<T>(string filePath, T objectToWrite, bool append = false) where T : new()
+        //public static void WriteToFile<T>(string filePath, T objectToWrite, bool append = false) where T : new()
         //{
         //    TextWriter writer = null;
         //    try
