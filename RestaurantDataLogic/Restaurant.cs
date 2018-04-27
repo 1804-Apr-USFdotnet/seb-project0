@@ -9,7 +9,7 @@
 
 namespace RestaurantDataLogic
 {
-    using System;
+    using Newtonsoft.Json;
     using System.Collections.Generic;
     
     public partial class Restaurant
@@ -19,8 +19,10 @@ namespace RestaurantDataLogic
         {
             this.Reviews = new HashSet<Review>();
         }
-    
+
+        [JsonIgnoreAttribute]
         public int id { get; set; }
+
         public string Name { get; set; }
         public string Address { get; set; }
         public double Rating { get; set; }

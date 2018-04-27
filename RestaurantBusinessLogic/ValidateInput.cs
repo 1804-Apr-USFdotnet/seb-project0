@@ -8,26 +8,11 @@ namespace RestaurantBusinessLogic
     ///     1. "reviews [string]"
     ///     2. "restaurants [optional string]"
     /// </summary>
-    public static class ValidateInput
+    internal static class ValidateInput
     {
-        public static string Validate(params string[] input)
-        {
-            ValidateCommand(input);
-            if (input[0] == "reviews")
-            {
-                return JsonConvert.SerializeObject(ProcessInput.GetReviews(input[1]));
-            }
-
-            else
-            {
-                return JsonConvert.SerializeObject(ProcessInput.GetRestaurants(input));
-            }
-        }
-
-        public static void ValidateCommand(params string[] input)
+        internal static void Validate(params string[] input)
         {
             if (input.Length == 0) throw new InvalidInputException(); // no command given
-
             switch (input[0])
             {
                 case "reviews":

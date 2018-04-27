@@ -1,48 +1,74 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
 using RestaurantDataLogic;
 
 namespace RestaurantBusinessLogic
 {
-    static internal class ProcessInput
+    public static class ProcessInput
     {
-        static internal List<RestaurantInfo> GetRestaurants(params string[] restaurantParams)
+        static internal string GetRestaurants(params string[] restaurantParams)
         {
             List<Restaurant> restaurants = new List<Restaurant>();
             List<RestaurantInfo> restaurantsInfo = new List<RestaurantInfo>();
+            string response = null;
 
-            // Dependency injection for entity storage
+            // 1) Validate input
+            ValidateInput.Validate(restaurantParams);
+
+            // 2) Dependency injection for entity storage
             Storage storage = new Storage(new DBUtility());
 
-            // Get list of restaurants from database
+            // 3) Get list of restaurants from database
             restaurants = storage.GetRestaurantModels();
 
-            // Convert list of restaurant models to list of restaurant output objects
+            // 4) Convert list of restaurant models to list of restaurant output objects
             restaurantsInfo = ConvertModels.GetRestaurantInfos(restaurants);
 
-            // Sort list based on optional parameters
+            // 5) Sort list based on optional parameters
             if (restaurantParams.Length > 1) { SortRestaurants.Sort(ref restaurantsInfo, restaurantParams); }
 
-            return restaurantsInfo;
+            // 6) Create response json string
+            response = JsonConvert.SerializeObject(restaurantsInfo);
+
+            // 7) Return response to client
+            return response;
         }
 
-        static internal List<ReviewInfo> GetReviews(string restaurantName)
+        static internal string GetReviews(params string[] reviewParams)
         {
             List<Review> reviews = new List<Review>();
             List<ReviewInfo> reviewsInfo = new List<ReviewInfo>();
+            string response = null;
 
-            // Dependency injection
+            // 1) Validate input
+            ValidateInput.Validate(reviewParams);
+
+            // 2) Dependency injection
             Storage storage = new Storage(new DBUtility());
 
-            // Get restaurant id based on name
-            int restaurantId = storage.GetRestaurantId(restaurantName);
+            // 3) Get restaurant id based on name
+            int restaurantId = storage.GetRestaurantId(string.Join(" ", reviewParams.Skip(1).ToArray()));
 
-            // Get list of reviews from database based on restaurant id
+            // 4) Get list of reviews from database based on restaurant id
             reviews = storage.GetReviewModels(restaurantId);
 
-            // Convert list of review models to list of review output objects
+            // 5) Convert list of review models to list of review output objects
             reviewsInfo = ConvertModels.GetReviewInfos(reviews);
 
-            return reviewsInfo;
+            // 6) Create response json string
+            response = JsonConvert.SerializeObject(reviewsInfo);
+
+            // 7) Return response to client
+            return response;
+        }
+
+        public static string Response(params string[] inputParams)
+        {
+            if (inputParams[0] == "restaurants") return GetRestaurants(inputParams);
+            if (inputParams[0] == "reviews") return GetReviews(inputParams);
+
+            return null;
         }
     }
 }

@@ -33,7 +33,7 @@ namespace RestaurantConsole
                         string[] inputParams = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                         // get Json string response from business logic
-                        string response = ValidateInput.Validate(inputParams);
+                        string response = ProcessInput.Response(inputParams);
 
                         if (response != null)
                         {

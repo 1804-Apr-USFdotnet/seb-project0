@@ -12,7 +12,7 @@ namespace RestaurantBusinessLogic
         public static explicit operator ReviewInfo(Review r)
         {
             ReviewInfo rout = new ReviewInfo();
-            rout.Name = r.Username;
+            rout.Name = r.Name;
             rout.Summary = r.Summary;
             rout.Rating = (double)r.Rating;
 
