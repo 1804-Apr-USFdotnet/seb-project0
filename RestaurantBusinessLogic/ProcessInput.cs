@@ -29,7 +29,7 @@ namespace RestaurantBusinessLogic
             if (restaurantParams.Length > 1) { SortRestaurants.Sort(ref restaurantsInfo, restaurantParams); }
 
             // 6) Create response json string
-            response = JsonConvert.SerializeObject(restaurants);
+            response = JsonConvert.SerializeObject(restaurantsInfo);
 
             // 7) Return response to client
             return response;

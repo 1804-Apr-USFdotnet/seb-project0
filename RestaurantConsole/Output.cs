@@ -11,7 +11,7 @@ namespace RestaurantConsole
             Console.WriteLine("Enter a command.\n");
             Console.WriteLine("Get reviews: \n   reviews [restaurant name]\n");
             Console.WriteLine("Get restaurants: \n   restaurants [optional parameters]\n");
-            Console.WriteLine("   t [#]  -- get top # restaurants. E.g: restaurants t3");
+            Console.WriteLine("   top [#]  -- get top # restaurants. E.g: restaurants t3");
             Console.WriteLine("   contains [partial name] -- get restaurants containing partial name. E.g: restaurants mcd");
             Console.WriteLine("   sortby [order by] [asc|desc] -- get ordered list of restaurants. E.g: restaurants order rating desc");
             Console.WriteLine("   [default]  -- get all restaurants. E.g: restaurants\n");
